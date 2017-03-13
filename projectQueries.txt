@@ -1,0 +1,13 @@
+create DATABASE employee;
+
+use employee;
+
+create table employeeDetails(employeeId int primary key AUTO_INCREMENT, employeeName varchar(50),employeeEmailId varchar(50),departmentName varchar(50),employeeDesignation varchar(50));
+
+create table employeeAttendanceHistory(attendanceId int not null primary key AUTO_INCREMENT, employeeId int, checkInTime time,checkoutTime time,employeeStatus varchar(10), FOREIGN KEY(employeeId) REFERENCES employeeDetails(employeeId) ON DELETE CASCADE ON UPDATE CASCADE);
+
+ALTER table employeeAttendanceHistory AUTO_INCREMENT=1001
+
+ALTER TABLE employeeAttendanceHistory add column spanTime TIME after checkoutTime;
+
+ALTER TABLE employeeAttendanceHistory add column date DATE after employeeId;
